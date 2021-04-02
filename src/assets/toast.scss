@@ -1,0 +1,25 @@
+.toastContainer {
+  position: fixed;
+  display: grid;
+  bottom: 0;
+  text-align: center;
+  pointer-events: none;
+  z-index: 99;
+  width: 100%;
+  .toastMessage {
+    opacity: 0.9;
+    display: inline-block;
+    margin: 0 auto 20px;
+    background-color: rgb(44, 97, 44);
+    color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 0 5px #000000;
+    padding: 10px 40px;
+    transition: all 0.5s ease-out;
+    font-size: 17px;
+    &.hide {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+  }
+}

@@ -1,0 +1,83 @@
+.techStack {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  .wordGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    margin-top: 30px;
+    .techLevel {
+      display: block;
+      margin: 10px 0;
+      // &.l6 {
+      //   font-size: 32px;
+      // }
+      // &.l5 {
+      //   font-size: 28px;
+      // }
+      // &.l4 {
+      //   font-size: 24px;
+      // }
+      // &.l3 {
+      //   font-size: 18px;
+      // }
+      // &.l2 {
+      //   font-size: 14px;
+      // }
+      // &.l1 {
+      //   font-size: 12px;
+      // }
+      @media(max-width: 767px) {
+        margin: 6px 0;
+        font-size: 16px;
+        &.l1, &.l2, &.l3 {
+          display: none;
+        }
+      }
+    }
+    @media(max-width: 767px) {
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    }
+  }
+}
+
+.experience {
+  padding: 10px 0;
+  .experience-container {
+    .inverted {
+      background-color: $text;
+      color: $background;
+      width: 100%;
+      h2, p, span {
+        color: $background;
+      }
+    }
+    .job-block {
+      padding: 30px 15px;
+      .job-header {
+        font-weight: 100;
+        @media (max-width: 767px) {
+          .title-sep {
+            display: none;
+          }
+          .duration {
+            display: block;
+            font-size: 20px;
+            margin-bottom: 12px;
+          }
+        }
+      }
+      .job-title {
+        font-family: $titleFont;
+        font-size: 26px;
+        font-weight: 700;
+      }
+      .job-description {
+        max-width: 800px;
+        @media (min-width: 767px) {
+          margin-left: 16px;
+        }
+        
+      }
+    }
+  }
+}

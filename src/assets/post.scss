@@ -1,0 +1,14 @@
+.postContainer {
+  figure {
+    margin: 15px 0;
+  }
+  figcaption {
+    padding: 20px;
+    border-bottom: 2px solid $accent;
+  }
+  img {
+    max-width: 100%;
+    margin: auto;
+    display: block;
+  }
+}

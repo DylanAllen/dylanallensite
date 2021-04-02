@@ -1,0 +1,55 @@
+#pageheader {
+  margin-bottom: 40px;
+  .big-heading {
+    font-size: 13vw;
+    letter-spacing: 0vw;
+    font-weight: 100;
+    margin-bottom: 0;
+    @media (min-width: $containerPx) {
+      font-size: 154px;
+    }
+  }
+  
+  .tagline {
+    font-size: 7vw;
+    display: block;
+    color: $accent;
+    letter-spacing: -0.5vw;
+    font-family: $titleFont;
+    font-weight: 700;
+    @media (min-width: $containerPx) {
+      font-size: 83px;
+      letter-spacing: -6px;
+    }
+  }
+}
+
+#posts {
+  margin-top: 40px;
+}
+
+.introtext {
+  font-size: 20px;
+  padding: 0 15px;
+}
+
+$sectionPadding: 60px;
+
+section {
+  padding: $sectionPadding 0;
+  &.inverted {
+    background-color: $text;
+    color: $background;
+    padding: $sectionPadding 0;
+    width: 100%;
+    p {
+      color: $background;
+    }
+    a {
+      color: $altlink;
+      &:hover {
+        color: $althover;
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+.image-container {
+  animation: pulse 2s ease 0s infinite alternate;
+  max-width: $containerWidth;
+  &.loaded {
+    animation: none;
+  }
+  .image-div {
+    position: relative;
+    background-size: cover;
+    background-position: center center;
+    transition: opacity 0.3s ease;
+    height: 100%;
+    width: 100%;
+    figure {
+      margin: 0;
+      figcaption {
+        position: absolute;
+        bottom: 0;
+        padding: 8px;
+        background-color: rgba(20,20,20,0.7);
+        color: #fafafa;
+        display: block;
+        width: 100%;
+        text-align: right;
+        a {
+          color: #bc92e4;
+        }
+      }
+    }
+
+  }
+}
+
+@keyframes pulse {
+  from {background-color: #ffffff;}
+  to { background-color: #9f9f9f;}
+}
