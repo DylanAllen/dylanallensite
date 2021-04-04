@@ -62,7 +62,7 @@ const IndexPage = () => {
             {visitor ? ", and welcome back!" : ","} I am a{" "}
             <strong>frontend web developer/team lead</strong> in{" "}
             <em>
-              <a href="https://en.wikipedia.org/wiki/Tulsa,_Oklahoma">
+              <a tabIndex={6} href="https://en.wikipedia.org/wiki/Tulsa,_Oklahoma">
                 Tulsa, OK
               </a>
             </em>

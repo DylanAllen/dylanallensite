@@ -1,7 +1,7 @@
 import Layout from '../components/Layout'
 import { Heading } from 'grommet';
 import { useEffect, useContext, useState } from 'react';
-import { Context } from './_app';
+import { Context } from "../App";
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import AdminComments from '../components/AdminComments';

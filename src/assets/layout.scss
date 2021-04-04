@@ -1,9 +1,9 @@
-.loaded {
-  transition: opacity 0.3s ease;
-}
-.invisible {
-  opacity: 0;
-}
+// .loaded {
+//   transition: opacity 0.3s ease;
+// }
+// .invisible {
+//   opacity: 0;
+// }
 
 header#mainheader {
   display: grid;
@@ -70,7 +70,9 @@ footer.container {
         }
       }
     }
-    a.authicon {
+    button.authicon {
+      border: none;
+      background-color: transparent;
       display: inline-flex;
       margin-left: 10px;
       svg {

@@ -7,6 +7,7 @@ import { meta as NewSite } from '../pages/blog/newsite';
 import { meta as Moov } from '../pages/blog/moov';
 import { meta as Toast } from '../pages/blog/toast';
 import { meta as BookReviews } from '../pages/blog/book-reviews';
+import { meta as FramerMotion } from '../pages/blog/framer-motion';
 import {meta as Accelerate1} from '../pages/blog/accelerate-1';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -35,6 +36,7 @@ const item = {
 
 
 let posts: MetaType[] = [
+  FramerMotion,
   Accelerate1,
   BookReviews,
   Toast,
@@ -55,9 +57,10 @@ interface PostProps {
   imgHeight?: string;
   imgWidth?: string;
   className?: string;
+  index: number;
 }
 
-const PostCard: React.FunctionComponent<PostProps> = ({ post, imgHeight, imgWidth }) => {
+const PostCard: React.FunctionComponent<PostProps> = ({ post, imgHeight, imgWidth, index }) => {
 
   const { ref, inView } = useInView();
   const controls = useAnimation()
@@ -70,7 +73,6 @@ const PostCard: React.FunctionComponent<PostProps> = ({ post, imgHeight, imgWidt
 
   useEffect(() => {
     if (inView && !visible) {
-      console.log('vis')
       controls.start("visible");
       setVisible(true);
     }
@@ -85,22 +87,37 @@ const PostCard: React.FunctionComponent<PostProps> = ({ post, imgHeight, imgWidt
       className="post-summary"
       ref={ref}
     >
-      <h2 className="post-title" onClick={() => {gotToPost(post.slug)}}>{post.title}</h2>
+      <motion.h2
+        tabIndex={(7 + index)}
+        role="link"
+        layoutId={`title-${post.slug}`}
+        className="post-title"
+        onClick={() => {
+          gotToPost(post.slug);
+        }}
+      >
+        {post.title}
+      </motion.h2>
       <div className="post-card">
-        <p className="post-desc">{post.description}</p>   
+        <p className="post-desc">{post.description}</p>
         <Picture
           className="post-image"
-          src={post.image} style={{height: imgHeight, width: imgWidth}}
+          src={post.image}
+          style={{ height: imgHeight, width: imgWidth }}
           overlayed={true}
-          onClick={() => { gotToPost(post.slug) }}
+          onClick={() => {
+            gotToPost(post.slug);
+          }}
           layoutId={`post-${post.slug}`}
-        />   
+        />
         <div className="post-floater"></div>
-        <Link to={`/blog/${post.slug}`} className="post-link">View Post</Link>
+        <Link tabIndex={-1} to={`/blog/${post.slug}`} className="post-link">
+          View Post
+        </Link>
         <div className="clear"></div>
       </div>
     </motion.article>
-  )
+  );
 }
 
 const PostList: React.FunctionComponent<PostsProps> = ({imgHeight, imgWidth, className}) => {
@@ -113,7 +130,7 @@ const PostList: React.FunctionComponent<PostsProps> = ({imgHeight, imgWidth, cla
       initial="hidden"
       animate="visible"
     >
-      {posts.map(post => <PostCard post={post} key={post.slug} imgHeight={ (imgHeight) ? imgHeight : "300px" } imgWidth={(imgWidth)? imgWidth : "400px"}></PostCard>)}
+      {posts.map((post, index) => <PostCard index={index} post={post} key={post.slug} imgHeight={ (imgHeight) ? imgHeight : "300px" } imgWidth={(imgWidth)? imgWidth : "400px"}></PostCard>)}
       </motion.div>
   )
 }

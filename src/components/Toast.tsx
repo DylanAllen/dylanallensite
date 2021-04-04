@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from "react";
+import { useState, useEffect, useReducer } from "react";
 
 export type ToastStatusType = 'success' | 'warn' | 'error'
 
@@ -36,6 +36,7 @@ const ToastComponent = ({message, id, status, kill}: ToastComponentProps) => {
         },5000)
       })
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[message])
 
   return (

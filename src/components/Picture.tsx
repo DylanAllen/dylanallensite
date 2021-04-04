@@ -1,10 +1,8 @@
 import { motion } from "framer-motion";
-import { useState, useEffect, CSSProperties } from "react";
-import { getImage } from "../utils/firebase";
+import { useState, CSSProperties } from "react";
 
 interface Props {
   src?: string;
-  fbpath?: string;
   style?: CSSProperties;
   className?: string;
   overlayed?: boolean;
@@ -17,8 +15,7 @@ const greyPng = `, url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAQ
 
 const Picture: React.FunctionComponent<Props> = (props) => {
 
-  const { style, src, fbpath, overlayed, onClick, layoutId } = props;
-  const [url, setImg] = useState('');
+  const { style, src, overlayed, onClick, layoutId } = props;
   const [opacity, setOpacity] = useState(0);
   const [animate, setAnimate] = useState(true);
 
@@ -31,18 +28,6 @@ const Picture: React.FunctionComponent<Props> = (props) => {
     }
   }
 
-  useEffect(() => {
-    (async () => {
-      if (src) {
-        setImg(`${src}`);
-      } else if (fbpath) {
-        const img = await getImage(fbpath);
-        setImg(img);
-      }
-    })()  
-  }, []);
-
-
   return (
     <div
       className={
@@ -54,13 +39,12 @@ const Picture: React.FunctionComponent<Props> = (props) => {
       <motion.div
         className={"image-div" + (overlayed ? " overlay" : "")}
         style={{
-          backgroundImage: `url(${url}) ${overlayed ? greyPng : ""}`,
-          opacity: opacity,
+          backgroundImage: `url(${src}) ${overlayed ? greyPng : ""}`
         }}
         layoutId={layoutId}
       >
         <figure>
-          <motion.img src={url} style={{ display: "none" }} onLoad={loaded}/>
+          <motion.img src={src} style={{ display: "none" }} onLoad={loaded}/>
           {props.caption ? <figcaption>{props.caption}</figcaption> : ""}
         </figure>
       </motion.div>

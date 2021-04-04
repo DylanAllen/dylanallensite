@@ -1,10 +1,11 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Context } from '../pages/_app';
 import firebase from 'firebase/app';
 import { Trash, CheckboxSelected } from 'grommet-icons';
 import { Heading, Markdown } from 'grommet';
 import 'firebase/firestore'
 import { Link } from "react-router-dom";
+import { Context } from "../App";
+import { apiPost } from "../utils/api";
 
 interface CommentType {
   userid: string;
@@ -72,20 +73,6 @@ const AdminComments: React.FunctionComponent = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[trigger])
 
-  const apiPost = async (payload: any, url: string) => {
-
-    return await fetch(`https://www.dylanallen.net${url}`, {
-      method: 'POST',
-      mode: 'cors',
-      cache: 'no-cache',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload)
-    })
-
-  }
-
   const approveComment = async (slug: string, id: string) => {
     if (state.user) {
       const payload = {
@@ -94,7 +81,7 @@ const AdminComments: React.FunctionComponent = () => {
         token: await state.user.getIdToken()
       }
 
-      const post = await apiPost(payload, '/api/comments/approve');
+      const post = await apiPost(payload, '/approve');
       const res = await post.json()
       if (post.status === 200) {
         state.toast('Comment approved.');
@@ -116,7 +103,7 @@ const AdminComments: React.FunctionComponent = () => {
         token: await state.user.getIdToken()
       }
 
-      const post = await apiPost(payload, '/api/comments/delete');
+      const post = await apiPost(payload, '/delete');
       const res = await post.json()
       if (post.status === 200) {
         state.toast('Comment deleted.');

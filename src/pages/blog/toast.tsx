@@ -3,7 +3,8 @@ import Picture from "../../components/Picture";
 import Comments from "../../components/Comments";
 import React, { useContext } from "react";
 import usePrism from "../../hooks/usePrism";
-import { Context } from "../_app";
+import { Context } from "../../App";
+import { motion } from "framer-motion";
 
 const toastCodeString = `import React, { useEffect, useState } from "react";
 
@@ -113,7 +114,7 @@ const Toast: React.FunctionComponent = () => {
       description={meta.description}
     >
       <div className="container">
-        <h1>{meta.title}</h1>
+        <motion.h1 layoutId={`title-${meta.slug}`}>{meta.title}</motion.h1>
         <Picture
           src={meta.image}
           style={{ width: "100%", height: "45vw", maxHeight: "700px" }}
@@ -131,7 +132,7 @@ const Toast: React.FunctionComponent = () => {
         </p>
         <p>
           If you don't know what I mean when I say "toast notification",{" "}
-          <a onClick={() => toast("This is a toast!")}>click here</a> to see an
+          <button onClick={() => toast("This is a toast!")}>click here</button> to see an
           example. It is a message that pops up at the bottom of the window like
           toast popping out of the toaster.
         </p>

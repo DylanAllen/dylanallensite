@@ -2,18 +2,19 @@ import Layout from '../../components/Layout'
 import Picture from '../../components/Picture';
 import Comments from '../../components/Comments';
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const BookReviews: React.FunctionComponent<{ state: any }> =  () => {
 
   return (
     <Layout title={`${meta.title} | Dylan Allen | JavaScript Developer | Frontend Web`} image={meta.image} description={meta.description}>
       <div className="container">
-        <h1>{meta.title}</h1>
+        <motion.h1 layoutId={`title-${meta.slug}`}>{meta.title}</motion.h1>
         <Picture
           src={meta.image}
           style={{ width: '100%', height: '45vw', maxHeight: '700px' }}
           caption={<>
-            photo by <a href="https://kaboompics.com/" target="_blank" rel="nofollow">Karolina Grabowska</a>
+            photo by <a href="https://kaboompics.com/" target="_blank" rel="noreferrer">Karolina Grabowska</a>
           </>}
           layoutId={`post-${meta.slug}`}
         ></Picture>
@@ -38,19 +39,19 @@ const BookReviews: React.FunctionComponent<{ state: any }> =  () => {
         </h3>
         <ul>
           <li>
-            <a href="https://nicolefv.com/book" target="_blank" rel="nofollow">Accelerate</a> by Nicole Forsgren PhD, Jez Humble, and Gene Kim
+            <a href="https://nicolefv.com/book" target="_blank" rel="noreferrer">Accelerate</a> by Nicole Forsgren PhD, Jez Humble, and Gene Kim
           </li>
           <li>
-            <a href="http://growth.eladgil.com/" target="_blank" rel="nofollow">High Growth Handbook</a> by Elad Gil
+            <a href="http://growth.eladgil.com/" target="_blank" rel="noreferrer">High Growth Handbook</a> by Elad Gil
           </li>
           <li>
-            <a href="https://www.whatmatters.com/the-book/" target="_blank" rel="nofollow">Measure What Matters</a> by John Doerr
+            <a href="https://www.whatmatters.com/the-book/" target="_blank" rel="noreferrer">Measure What Matters</a> by John Doerr
           </li>
           <li>
-            <a href="http://hardthings.bhorowitz.com" target="_blank" rel="nofollow">The Hard Thing About Hard Things</a> by Ben Horowitz
+            <a href="http://hardthings.bhorowitz.com" target="_blank" rel="noreferrer">The Hard Thing About Hard Things</a> by Ben Horowitz
           </li>
           <li>
-            <a href="https://www.barnesandnoble.com/w/payments-systems-in-the-us-third-edition-carol-coye-benson/1132644392" target="_blank" rel="nofollow">Payments Systems in the U.S.</a> by Carol Coye Benson, Scott Loftesness, Russ Jones (this one is a maybe)
+            <a href="https://www.barnesandnoble.com/w/payments-systems-in-the-us-third-edition-carol-coye-benson/1132644392" target="_blank" rel="noreferrer">Payments Systems in the U.S.</a> by Carol Coye Benson, Scott Loftesness, Russ Jones (this one is a maybe)
           </li>
         </ul>
        

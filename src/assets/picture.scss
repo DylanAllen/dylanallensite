@@ -20,7 +20,7 @@
         background-color: rgba(20,20,20,0.7);
         color: #fafafa;
         display: block;
-        width: 100%;
+        width: calc(100% - 16px);
         text-align: right;
         a {
           color: #bc92e4;

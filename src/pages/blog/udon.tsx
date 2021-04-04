@@ -2,6 +2,7 @@ import Layout from "../../components/Layout";
 import { Markdown } from "grommet";
 import Comments from "../../components/Comments";
 import Picture from "../../components/Picture";
+import { motion } from "framer-motion";
 
 const md = `
 I recently published my first honest to goodness open source project. I have been working on this on nights and weekends for the past several months. My wife and I welcomed a new baby during that time, so I took a break from it for a while, and then picked it back up recently. It is still very much a work in progress, but I got it to a point that I am proud enough to share it with the world. So without further ado, meet Udon: https://github.com/DylanAllen/udon
@@ -56,7 +57,7 @@ const UdonOne: React.FunctionComponent<{ state: any }> = () => (
     description={meta.description}
   >
     <div className="container">
-      <h1>{meta.title}</h1>
+      <motion.h1 layoutId={`title-${meta.slug}`}>{meta.title}</motion.h1>
       <Picture
         src={meta.image}
         style={{ width: "100%", height: "45vw", maxHeight: "700px" }}

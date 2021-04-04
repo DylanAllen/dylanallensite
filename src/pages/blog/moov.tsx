@@ -3,6 +3,7 @@ import Picture from "../../components/Picture";
 import Comments from "../../components/Comments";
 import React from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const NewSite: React.FunctionComponent<{ state: any }> = () => {
   return (
@@ -12,7 +13,7 @@ const NewSite: React.FunctionComponent<{ state: any }> = () => {
       description={meta.description}
     >
       <div className="container">
-        <h1>{meta.title}</h1>
+        <motion.h1 layoutId={`title-${meta.slug}`}>{meta.title}</motion.h1>
         <Picture
           src={meta.image}
           style={{ width: "100%", height: "45vw", maxHeight: "700px" }}
