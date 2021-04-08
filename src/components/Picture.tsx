@@ -9,24 +9,24 @@ interface Props {
   onClick?: () => void;
   caption?: React.ReactNode;
   layoutId?: string;
+  transition?: any;
 }
 
-const greyPng = `, url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAQAAAAnOwc2AAAAEUlEQVR42mNMO8OAARiHsiAAVkoL/1ec1jIAAAAASUVORK5CYII=)`
+const greyPng = `, url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAQAAAAnOwc2AAAAEUlEQVR42mNMO8OAARiHsiAAVkoL/1ec1jIAAAAASUVORK5CYII=)`;
 
 const Picture: React.FunctionComponent<Props> = (props) => {
-
-  const { style, src, overlayed, onClick, layoutId } = props;
+  const { style, src, overlayed, onClick, layoutId, transition } = props;
   const [opacity, setOpacity] = useState(0);
   const [animate, setAnimate] = useState(true);
 
   const loaded = () => {
     if (!opacity) {
-      setOpacity(1)
+      setOpacity(1);
       setTimeout(() => {
-        setAnimate(false)
-      }, 300)
+        setAnimate(false);
+      }, 300);
     }
-  }
+  };
 
   return (
     <div
@@ -39,18 +39,18 @@ const Picture: React.FunctionComponent<Props> = (props) => {
       <motion.div
         className={"image-div" + (overlayed ? " overlay" : "")}
         style={{
-          backgroundImage: `url(${src}) ${overlayed ? greyPng : ""}`
+          backgroundImage: `url(${src}) ${overlayed ? greyPng : ""}`,
         }}
         layoutId={layoutId}
+        transition={transition}
       >
         <figure>
-          <motion.img src={src} style={{ display: "none" }} onLoad={loaded}/>
+          <motion.img className="hidden" src={src} onLoad={loaded} />
           {props.caption ? <figcaption>{props.caption}</figcaption> : ""}
         </figure>
       </motion.div>
     </div>
   );
+};
 
-}
-
-export default Picture
+export default Picture;

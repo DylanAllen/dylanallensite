@@ -1,7 +1,11 @@
 .image-container {
   animation: pulse 2s ease 0s infinite alternate;
   max-width: $containerWidth;
+  background-color: transparent;
   &.loaded {
+    animation: none;
+  }
+  &.transition-image {
     animation: none;
   }
   .image-div {
@@ -11,6 +15,7 @@
     transition: opacity 0.3s ease;
     height: 100%;
     width: 100%;
+    background-color: transparent;
     figure {
       margin: 0;
       figcaption {

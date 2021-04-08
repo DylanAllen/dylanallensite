@@ -45,7 +45,7 @@ h1, h2, h3, h4 {
   font-family: $titleFont;
 }
 
-body {
+html, body {
   background-color: $background;
   color: $text;
   margin: 0;
@@ -79,4 +79,8 @@ ol {
 li {
   font-weight: 300;
   margin-bottom: 7px;
+}
+
+.hidden {
+  display: none;
 }

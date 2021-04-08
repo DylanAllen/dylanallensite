@@ -12,3 +12,24 @@
     display: block;
   }
 }
+
+.transition-screen {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index:99;
+  background-color: transparent;
+  padding: 0 15px;
+  .transition-title {
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 117px;
+  }
+  .transition-image {
+    margin: auto;
+    margin-top: 0px;
+    max-width: 1200px;
+  }
+}
