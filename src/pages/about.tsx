@@ -6,7 +6,7 @@ const AboutPage: React.FunctionComponent<{state: any }> = () => (
       <h1>About</h1>
 
      <p>
-       Hi. I am a JavaScript developer in Tulsa, OK... my name is Dylan... but you probably already knew that...
+       Hi. I am an engineering manager and frontend engineer in Tulsa, OK... my name is Dylan... but you probably already knew that...
      </p>
       <p>Well anyway, you can find out more about things that I do here:</p>
       <ul>
