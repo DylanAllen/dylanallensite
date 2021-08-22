@@ -8,6 +8,7 @@ import { meta as Toast } from "../pages/blog/toast";
 import { meta as BookReviews } from "../pages/blog/book-reviews";
 import { meta as FramerMotion } from "../pages/blog/framer-motion";
 import { meta as Accelerate1 } from "../pages/blog/accelerate-1";
+import { meta as Accelerate2 } from "../pages/blog/accelerate-2";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import React, { useContext, useEffect, useState } from "react";
@@ -36,6 +37,7 @@ const item = {
 };
 
 let posts: MetaType[] = [
+  Accelerate2,
   FramerMotion,
   Accelerate1,
   BookReviews,
