@@ -6,6 +6,7 @@ import Moov from "./moov";
 import Noiiice from "./noiiice";
 import UdonOne from "./udon";
 import Accelerate from "./accelerate-1";
+import Accelerate2 from "./accelerate-2";
 import BookReviews from "./book-reviews";
 import BlogPage from './blog';
 import Toast from "./toast";
@@ -22,6 +23,7 @@ const Blog: React.FunctionComponent<{ state: any }> = () => {
       <Route path="/blog/book-reviews" component={BookReviews} />
       <Route path="/blog/toast" component={Toast} />
       <Route path="/blog/framer-motion" component={FramerMotion} />
+      <Route path="/blog/accelerate-2" component={Accelerate2} />
       <Route path="/blog" component={BlogPage} />
     </Switch>
   );
