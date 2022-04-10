@@ -50,26 +50,28 @@ const Comps = {
   },
 };
 
-const UdonOne: React.FunctionComponent<{ state: any }> = () => (
-  <Layout
-    title={`${meta.title}  | Dylan Allen | JavaScript Developer | Frontend Web`}
-    image={meta.image}
-    description={meta.description}
-  >
-    <div className="container">
-      <motion.h1 layoutId={`title-${meta.slug}`}>{meta.title}</motion.h1>
-      <Picture
-        src={meta.image}
-        style={{ width: "100%", height: "45vw", maxHeight: "700px" }}
-        layoutId={`post-${meta.slug}`}
-      ></Picture>
-      <div className="postContainer">
-        <Markdown components={Comps}>{md}</Markdown>
+function UdonOne() {
+  return (
+    <Layout
+      title={`${meta.title}  | Dylan Allen | JavaScript Developer | front-end Web`}
+      image={meta.image}
+      description={meta.description}
+    >
+      <div className="container">
+        <motion.h1 layoutId={`title-${meta.slug}`}>{meta.title}</motion.h1>
+        <Picture
+          src={meta.image}
+          style={{ width: "100%", height: "45vw", maxHeight: "700px" }}
+          layoutId={`post-${meta.slug}`}
+        ></Picture>
+        <div className="postContainer">
+          <Markdown components={Comps}>{md}</Markdown>
+        </div>
+        <Comments slug={meta.slug}></Comments>
       </div>
-      <Comments slug={meta.slug}></Comments>
-    </div>
-  </Layout>
-);
+    </Layout>
+  )
+};
 
 export const meta = {
   title: "Udon Project Management",

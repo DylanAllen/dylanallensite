@@ -1,18 +1,20 @@
-import firebase  from 'firebase/app';
+import "firebase/compat/firestore"
 import 'firebase/storage'
 
 import 'firebase/auth'; 
+import { GoogleAuthProvider, User, getAuth, signInWithPopup } from "firebase/auth";
+import { FirebaseStorage, getStorage } from "firebase/storage"
 
 interface Auth {
     init: () => void;
-    login: () => Promise<firebase.User | null>;
+    login: () => Promise<User | null>;
     logout: () => Promise<any>;
-    provider: firebase.auth.GoogleAuthProvider;
-    storage: () => firebase.storage.Storage;
+    provider: GoogleAuthProvider;
+    storage: () => FirebaseStorage;
 }
 
 export interface AuthState {
-  user?: firebase.User | null;
+  user?: User | null;
   initialized?: boolean;
 }
 
@@ -21,15 +23,15 @@ export const authState = {
   initialized: false,
 }
 
-export const userEvent = (user: firebase.User | null) => {
+export const userEvent = (user: User | null) => {
   updateState({user: user});
   const event = new CustomEvent('userUpdate', { detail: user } )
   window.dispatchEvent(event);
 }
-const firebaseAuth = firebase.auth;
+const firebaseAuth = getAuth;
 
 export const auth: Auth = {
-    provider: new firebaseAuth.GoogleAuthProvider(),
+    provider: new GoogleAuthProvider(),
     init: async () => {
       updateState({initialized: true});
       auth.provider.addScope('https://www.googleapis.com/auth/contacts.readonly')
@@ -43,7 +45,7 @@ export const auth: Auth = {
         if (!authState.initialized) auth.init();
         if (!authState.user) {
         
-            return firebaseAuth().signInWithPopup(auth.provider).then((result) => {           
+            return signInWithPopup(firebaseAuth(), auth.provider).then((result) => {           
                 userEvent(result.user);
                 return result.user;
             }).catch(function(error) {
@@ -61,7 +63,7 @@ export const auth: Auth = {
       });
     },
     storage: () => {
-        return firebase.storage();
+        return getStorage();
     }
 }
 

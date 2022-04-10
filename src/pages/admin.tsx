@@ -2,24 +2,25 @@ import Layout from '../components/Layout'
 import { Heading } from 'grommet';
 import { useEffect, useContext, useState } from 'react';
 import { Context } from "../App";
-import firebase from 'firebase/app';
+import "firebase/compat/firestore"
 import 'firebase/firestore';
 import AdminComments from '../components/AdminComments';
-import { useHistory } from 'react-router-dom';
-const firestore = firebase.firestore;
+import { useNavigate } from 'react-router-dom';
+import { doc, getDoc, getFirestore } from 'firebase/firestore';
 
 const AdminPage: React.FunctionComponent<{state: any }> = () => {
 
-  const state = useContext(Context);
+  const {user} = useContext(Context);
   const [authorized, setAuth] = useState(false);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (!state.user){
+    if (!user){
       return;
     }
     if (authorized) return;
-    const ref = firestore().collection('users').doc(state.user.uid).get();
+    const db = getFirestore();
+    const ref = getDoc(doc(db,'users',user.uid))
     ref.then(doc => {
       let data = doc.data();
       if (data && data.admin === true) {
@@ -27,13 +28,13 @@ const AdminPage: React.FunctionComponent<{state: any }> = () => {
       }
     }).catch(err => {
       console.error(err)
-      history.push('/');
+      navigate('/');
     })
-  })
+  },[user]);
 
   return (
     
-    <Layout title="Admin Dylan Allen | JavaScript Developer | Frontend Web">
+    <Layout title="Admin Dylan Allen | JavaScript Developer | Front-end Web">
       <div>
         { authorized &&
           <div>

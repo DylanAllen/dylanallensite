@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 export default function Accelerate2() {
   return (
     <Layout
-      title={`${meta.title} | Book Review | Dylan Allen | JavaScript Developer | Frontend Web`}
+      title={`${meta.title} | Book Review | Dylan Allen | JavaScript Developer | Front-end Web`}
       image={meta.image}
       description={meta.description}
     >
@@ -58,7 +58,7 @@ export default function Accelerate2() {
           multiple teams each building pieces of a one large application, there
           will have to be some amount of collaboration and common interfaces. It
           is a good idea to architect those interfaces firdst just as you would
-          start with an API spec to form a "contract" between the frontend and
+          start with an API spec to form a "contract" between the front-end and
           backend.
         </p>
         <hr />

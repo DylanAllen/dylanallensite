@@ -22,5 +22,11 @@
   },
   "include": [
     "src",
-    "functions"  ]
+    "functions"
+  ],
+  "paths": {
+    "crypto": [
+      "node_modules/crypto-js"
+    ]
+  }
 }

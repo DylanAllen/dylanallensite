@@ -1,18 +1,19 @@
 import React, { useContext, useState, useEffect } from "react";
-import firebase from 'firebase/app';
+
 import { Trash, CheckboxSelected } from 'grommet-icons';
 import { Heading, Markdown } from 'grommet';
-import 'firebase/firestore'
+import "firebase/compat/firestore"
 import { Link } from "react-router-dom";
 import { Context } from "../App";
 import { apiPost } from "../utils/api";
+import { collection, getDocs, getFirestore, Timestamp } from "firebase/firestore";
 
 interface CommentType {
   userid: string;
   message: string;
   displayname: string;
   status: 'approved' | 'pending' | 'rejected';
-  timestamp: firebase.firestore.Timestamp;
+  timestamp: Timestamp;
   id: string;
   slug: string
 }
@@ -22,7 +23,8 @@ const AdminComments: React.FunctionComponent = () => {
   const state = useContext(Context)
   const [comments, updateComments] = useState<CommentType[]>([]);
   const [trigger, update] = useState(0);
-  const commentsRef = firebase.firestore().collection('comments');
+  const [db] = useState(getFirestore())
+  const commentsRef = collection(db, 'comments');
 
   const Comment: React.FunctionComponent<{ comment: CommentType }> = ({ comment }) => (
     <div className="commentContainer">
@@ -41,12 +43,13 @@ const AdminComments: React.FunctionComponent = () => {
   const getComments = async () => {
 
     let allComments: CommentType[] = [];
-    const posts = await commentsRef.get();
+    const posts = await getDocs(commentsRef)
 
     const commentsPromise = posts.docs.map(async (post) => {
       let slug = post.id;
       return new Promise(async (resolve) => {
-        const posts = (await post.ref.collection('comments').get()).docs
+        
+        const posts = (await getDocs(collection(db, 'comments', post.id, 'comments')))
         posts.forEach((doc) => {
           allComments.push({...doc.data(), slug: slug, id: doc.id} as CommentType);
         })
@@ -62,14 +65,7 @@ const AdminComments: React.FunctionComponent = () => {
   }
 
   useEffect(() => {
-
-    let unsunscribe: any;
-    if (unsunscribe) {
-      unsunscribe();
-    }
-    unsunscribe = firebase.firestore()
     getComments();
-
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[trigger])
 

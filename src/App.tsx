@@ -2,7 +2,7 @@ import { useEffect, useReducer } from "react";
 import { Helmet } from "react-helmet";
 import Routes from "./Routes";
 import { initApp } from "./utils/firebase";
-import firebase from "firebase/app";
+import { User } from "firebase/auth"
 import "firebase/auth";
 import Toaster, { ToastInput, ToastStatusType } from "./components/Toast";
 import React from "react";
@@ -11,7 +11,7 @@ import "./assets/style.scss";
 import { AnimateSharedLayout } from "framer-motion";
 
 export interface StateType {
-  user?: firebase.User | null;
+  user?: User | null;
   updateState: (state: StateFragment) => void;
   loaded?: boolean;
   toast: (message: string, status?: ToastStatusType) => void;
@@ -20,7 +20,7 @@ export interface StateType {
 }
 
 export interface StateFragment {
-  user?: firebase.User | null;
+  user?: User | null;
   updateState?: (state: StateType) => void;
   loaded?: boolean;
   toast?: (message: string, status?: ToastStatusType) => void;
@@ -106,9 +106,9 @@ function App() {
         />
       </Helmet>
       <Context.Provider value={state}>
-        <AnimateSharedLayout>
+        {/* <AnimateSharedLayout> */}
           <Routes />
-        </AnimateSharedLayout>
+        {/* </AnimateSharedLayout> */}
       </Context.Provider>
       <Toaster toastInput={state.toastValue} />
     </div>

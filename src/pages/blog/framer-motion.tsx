@@ -4,10 +4,10 @@ import Comments from '../../components/Comments';
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const FramerMotion: React.FunctionComponent<{ state: any }> =  () => {
+function FramerMotion() {
 
   return (
-    <Layout title={`${meta.title} | Dylan Allen | JavaScript Developer | Frontend Web`} image={meta.image} description={meta.description}>
+    <Layout title={`${meta.title} | Dylan Allen | JavaScript Developer | Front-end Web`} image={meta.image} description={meta.description}>
       <div className="container">
         <motion.h1 layoutId={`title-${meta.slug}`}>{meta.title}</motion.h1>
         <Picture

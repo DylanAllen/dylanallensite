@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 import { useContext, useEffect } from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 import { RouteContext } from "../utils/routeContext";
 import Picture from "./Picture";
 
 export default function SmoothTransition() {
   const { activePost, setActivePost } = useContext(RouteContext);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (activePost) {
@@ -15,7 +15,7 @@ export default function SmoothTransition() {
         left: 0,
       });
       setTimeout(() => {
-        history.push(`/blog/${activePost?.slug}`);
+        navigate(`/blog/${activePost?.slug}`);
         setActivePost(undefined);
       }, 500);
     }

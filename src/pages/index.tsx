@@ -52,7 +52,7 @@ const IndexPage = () => {
           animate="visible"
           variants={titleVariant}
         >
-          Engineering Manager
+          Front-end engineer
         </motion.span>
       </section>
       <section className="inverted">
@@ -60,16 +60,13 @@ const IndexPage = () => {
           <p>
             Good {greeting}
             {visitor ? ", and welcome back!" : ","} I am an{" "}
-            <strong>engineerig manager and frontend engineer</strong> in{" "}
+            <strong>front-end engineer</strong> in{" "}
             <em>
               <a tabIndex={6} href="https://en.wikipedia.org/wiki/Tulsa,_Oklahoma">
                 Tulsa, OK
               </a>
             </em>
-            . I like to work with React, Node.js, and TypeScript. I have
-            experience developing lambda functions, and really like serverless
-            architecture. My DB experience is mostly NoSQL (DynamoDB &
-            FireStore).
+            . I like to work with React, Node.js, and TypeScript.
           </p>
         </div>
       </section>

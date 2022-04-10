@@ -3,10 +3,10 @@ import Picture from "../../components/Picture";
 import Comments from "../../components/Comments";
 import { motion } from "framer-motion";
 
-const Noiiice: React.FunctionComponent<{ state: any }> = () => {
+function Noiiice() {
   return (
     <Layout
-      title={`${meta.title} | Dylan Allen | JavaScript Developer | Frontend Web`}
+      title={`${meta.title} | Dylan Allen | JavaScript Developer | front-end Web`}
       image={meta.image}
       description={meta.description}
     >

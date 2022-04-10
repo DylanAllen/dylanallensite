@@ -1,6 +1,6 @@
 import React from "react";
 import { Route } from "react-router";
-import { Switch } from "react-router-dom";
+import { Routes } from "react-router-dom";
 import NewSite from "./newsite";
 import Moov from "./moov";
 import Noiiice from "./noiiice";
@@ -12,20 +12,20 @@ import BlogPage from './blog';
 import Toast from "./toast";
 import FramerMotion from "./framer-motion";
 
-const Blog: React.FunctionComponent<{ state: any }> = () => {
+function Blog() {
   return (
-    <Switch>
-      <Route path="/blog/noiiice" component={Noiiice} />
-      <Route path="/blog/newsite" component={NewSite} />
-      <Route path="/blog/moov" component={Moov} />
-      <Route path="/blog/udon" component={UdonOne} />
-      <Route path="/blog/accelerate-1" component={Accelerate} />
-      <Route path="/blog/book-reviews" component={BookReviews} />
-      <Route path="/blog/toast" component={Toast} />
-      <Route path="/blog/framer-motion" component={FramerMotion} />
-      <Route path="/blog/accelerate-2" component={Accelerate2} />
-      <Route path="/blog" component={BlogPage} />
-    </Switch>
+    <Routes>
+      <Route path="/noiiice" element={<Noiiice />} />
+      <Route path="/newsite" element={<NewSite />} />
+      <Route path="/moov" element={<Moov />} />
+      <Route path="/udon" element={<UdonOne />} />
+      <Route path="/accelerate-1" element={<Accelerate />} />
+      <Route path="/book-reviews" element={<BookReviews />} />
+      <Route path="/toast" element={<Toast />} />
+      <Route path="/framer-motion" element={<FramerMotion />} />
+      <Route path="/accelerate-2" element={<Accelerate2 />} />
+      <Route path="/" element={<BlogPage />} />
+    </Routes>
   );
 };
 

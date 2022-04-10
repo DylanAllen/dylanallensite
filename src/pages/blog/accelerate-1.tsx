@@ -4,11 +4,11 @@ import Comments from '../../components/Comments';
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const Accelerate: React.FunctionComponent<{ state: any }> =  () => {
+function Accelerate() {
 
   return (
     <Layout
-      title={`${meta.title} | Book Review | Dylan Allen | JavaScript Developer | Frontend Web`}
+      title={`${meta.title} | Book Review | Dylan Allen | JavaScript Developer | Front-end Web`}
       image={meta.image}
       description={meta.description}
     >
@@ -136,7 +136,7 @@ const Accelerate: React.FunctionComponent<{ state: any }> =  () => {
         <h4>Support test data management</h4>
         <p>
           Not as deep of a topic as the others, and the benefits are obvious.
-          However, this is easy to overlook. As a frontend dev, I often have to
+          However, this is easy to overlook. As a front-end dev, I often have to
           generate a lot of test data, and different sets of data to test
           pagination and such. It is a much better use of time to have
           developers writing code instead of creating and manipulating test

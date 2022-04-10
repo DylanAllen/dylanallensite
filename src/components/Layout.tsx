@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useEffect } from 'react'
 import NavMenu from './NavMenu'
 import Footer from './Footer';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 type Props = {
@@ -15,9 +15,9 @@ type Props = {
 const Layout: React.FunctionComponent<Props> = (props) => {
 
   const { children, image } = props;
-  const title = props.title || 'Dylan Allen | JavaScript Engineer | Frontend Web | React | Serverless';
-  const description = props.description || "I am a frontend web developer in Tulsa, OK. I like to work with React, VueJS, and TypeScript. I have experience developing lambda functions, and really like serverless architecture. My DB experience is mostly NoSQL (DynamoDB & FireStore).";
-  const history = useHistory();
+  const title = props.title || 'Dylan Allen | JavaScript Engineer | Front-end Web | React | Serverless';
+  const description = props.description || "I am a front-end web developer in Tulsa, OK. I like to work with React, VueJS, and TypeScript. I have experience developing lambda functions, and really like serverless architecture. My DB experience is mostly NoSQL (DynamoDB & FireStore).";
+  const location = useLocation();
   const postGtag = (url: string) => {
     if (process.env.NODE_ENV === 'development') return null;
     let win = window as any;
@@ -25,15 +25,8 @@ const Layout: React.FunctionComponent<Props> = (props) => {
   }
 
   useEffect(() => {
-    const listen = history.listen((location) => {
-      postGtag(location.pathname);
-    });
-
-    return () => {
-      listen();
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    postGtag(location.pathname);
+  }, [location]);
   
     return (
       <div >

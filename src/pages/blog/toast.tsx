@@ -109,7 +109,7 @@ const Toast: React.FunctionComponent = () => {
 
   return (
     <Layout
-      title={`${meta.title} | Dylan Allen | JavaScript Developer | Frontend Web`}
+      title={`${meta.title} | Dylan Allen | JavaScript Developer | front-end Web`}
       image={meta.image}
       description={meta.description}
     >

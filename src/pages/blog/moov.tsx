@@ -5,10 +5,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-const NewSite: React.FunctionComponent<{ state: any }> = () => {
+function NewSite() {
   return (
     <Layout
-      title={`${meta.title} | Dylan Allen | JavaScript Developer | Frontend Web`}
+      title={`${meta.title} | Dylan Allen | JavaScript Developer | Front-end Web`}
       image={meta.image}
       description={meta.description}
     >
@@ -22,7 +22,7 @@ const NewSite: React.FunctionComponent<{ state: any }> = () => {
         <p>
           On October 5th 2020, I started at{" "}
           <Link to="https://moov.io">Moov Financial</Link> as a senior
-          frontend engineer. I am so excited to be a part of what we are
+          front-end engineer. I am so excited to be a part of what we are
           building!
         </p>
         <h2>Open source</h2>
@@ -67,7 +67,7 @@ const NewSite: React.FunctionComponent<{ state: any }> = () => {
 export const meta = {
   title: "Moov Financial",
   description:
-    "On October 5th 2020, I started at Moov Financial as a senior frontend engineer. Moov started as an open source project for NACHA file creation and validation for ACH. I love being part of a company that is contributing to the open source community, and building amazing banking software",
+    "On October 5th 2020, I started at Moov Financial as a senior front-end engineer. Moov started as an open source project for NACHA file creation and validation for ACH. I love being part of a company that is contributing to the open source community, and building amazing banking software",
   image: "/moov-banner.jpg",
   slug: "moov",
   date: new Date(2020, 10, 17),

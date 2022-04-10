@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes as Switch, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import SmoothTransition from "./components/SmoothTransition";
 import { MetaType } from "./interfaces";
@@ -24,19 +24,17 @@ export default function Routes() {
   return (
     <Router>
       <ScrollToTop />
-      <AnimatePresence>
         <RouteContext.Provider value={{ activePost, setActivePost }}>
           <Switch>
-            <RouteWrapper path="/blog" Component={Blog} />
-            <RouteWrapper path="/about" Component={AboutPage} />
-            <RouteWrapper path="/resume" Component={Resume} />
-            <RouteWrapper path="/leyla" Component={Leyla} />
-            <RouteWrapper path="/admin" Component={AdminPage} />
-            <RouteWrapper path="/" Component={IndexPage} />
+            <Route path="/blog/*" element={<RouteWrapper path="blog" Component={Blog} />} />
+            <Route path="/about" element={<RouteWrapper path="about" Component={AboutPage} />} />
+            <Route path="/resume" element={<RouteWrapper path="resume" Component={Resume} />} />
+            <Route path="/leyla" element={<RouteWrapper path="leyla" Component={Leyla} />} />
+            <Route path="/admin" element={<RouteWrapper path="admin" Component={AdminPage} />} />
+            <Route path="/" element={<RouteWrapper path="/" Component={IndexPage} />} />
           </Switch>
           <SmoothTransition />
         </RouteContext.Provider>
-      </AnimatePresence>
     </Router>
   );
 }
@@ -49,16 +47,15 @@ const RouteWrapper = ({
   Component: React.ComponentType<any>;
 }) => {
   return (
-    <Route path={path}>
-      <motion.div
-        key={path}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-        variants={routeAnimate}
-      >
-        <Component />
-      </motion.div>
-    </Route>
+    <motion.div
+      key={path}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      variants={routeAnimate}
+    >
+      <Component />
+    </motion.div>
   );
 };
+

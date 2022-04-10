@@ -1,10 +1,11 @@
 import { useContext, useState, useEffect, ChangeEvent } from "react";
 import { Context, StateType } from "../App";
-import firebase from "firebase/app";
+import "firebase/compat/firestore";
 import "firebase/firestore";
 import { Heading, TextArea, Button, Markdown, Box } from "grommet";
 import { Trash } from "grommet-icons";
 import { apiPost } from "../utils/api";
+import { collection, CollectionReference, deleteDoc, doc, DocumentData, getFirestore, onSnapshot, query, Timestamp, where } from "firebase/firestore";
 
 interface CommentProps {
   slug: string;
@@ -15,7 +16,7 @@ interface CommentType {
   message: string;
   displayname: string;
   status: "approved" | "pending" | "rejected";
-  timestamp: firebase.firestore.Timestamp;
+  timestamp: Timestamp;
   id: string;
   avatar?: string;
 }
@@ -26,10 +27,10 @@ const NoComment = () => (
 
 const deleteComment = async (
   id: string,
-  ref: firebase.firestore.CollectionReference<firebase.firestore.DocumentData>
+  ref: CollectionReference<DocumentData>
 ) => {
   try {
-    await ref.doc(id).delete();
+    await deleteDoc(doc(ref, id))
   } catch (err) {
     console.error(err);
     alert("Error deleting comment");
@@ -38,7 +39,7 @@ const deleteComment = async (
 
 const Comment: React.FunctionComponent<{
   comments: CommentType[];
-  dbRef: firebase.firestore.CollectionReference<firebase.firestore.DocumentData>;
+  dbRef: CollectionReference<DocumentData>;
   uid: string;
 }> = ({ comments, dbRef, uid }) => {
   return (
@@ -154,28 +155,24 @@ const Comments: React.FunctionComponent<CommentProps> = ({ slug }) => {
   const state = useContext(Context);
   const [comments, updateComments] = useState<CommentType[]>([]);
   const [commentsRef, setCommentsRef] = useState<
-    firebase.firestore.CollectionReference<firebase.firestore.DocumentData>
+    CollectionReference<DocumentData>
   >();
 
   useEffect(() => {
-    if (!commentsRef && state.initialized)
-      setCommentsRef(
-        firebase
-          .firestore()
-          .collection("comments")
-          .doc(slug)
-          .collection("comments")
+    if (!commentsRef && state.initialized) {
+      const db = getFirestore()
+      setCommentsRef( 
+        collection(db,"comments", slug,"comments")
       );
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.initialized]);
   useEffect(() => {
+    let unsub = () => {};
     if (commentsRef) {
-      let unsunscribe: any;
-      if (unsunscribe) {
-        unsunscribe();
-      }
-      unsunscribe = firebase.firestore();
-      commentsRef.where("status", "==", "approved").onSnapshot((snapShot) => {
+      const queryRef = query(commentsRef, where("status", "==", "approved"));
+      
+      unsub = onSnapshot(queryRef, (snapShot) => {
         const data = snapShot.docs.map((doc) => {
           return { ...doc.data(), id: doc.id } as CommentType;
         });
@@ -183,6 +180,9 @@ const Comments: React.FunctionComponent<CommentProps> = ({ slug }) => {
           updateComments(data);
         }
       });
+    }
+    return () => {
+      unsub();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [commentsRef]);

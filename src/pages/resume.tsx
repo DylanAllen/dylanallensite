@@ -36,7 +36,7 @@ const Resume = () => {
       <section className="inverted">
         <div className="introtext container">
           <p>
-            I am an <strong>engineering manager and frontend engineer</strong>{" "}
+            I am an <strong>front-end engineer</strong>{" "}
             in{" "}
             <em>
               <a href="https://en.wikipedia.org/wiki/Tulsa,_Oklahoma">
@@ -72,11 +72,11 @@ const Resume = () => {
               </h2>
               <div className="job-title">Engineering manager</div>
               <p className="job-description">
-                Leading a team of backend and frontend engineers building the
+                Leading a team of backend and front-end engineers building the
                 future of fintech.
               </p>
               <p className="job-description">
-                I joined Moov as a senior frontend engineer, was promoted to
+                I joined Moov as a senior front-end engineer, was promoted to
                 team lead after 4 months, and then promoted to engineering
                 manager 5 months after that. Managing a team of 5 engineers.
               </p>
@@ -91,7 +91,7 @@ const Resume = () => {
               </h2>
               <div className="job-title">Software Developer III, VP</div>
               <p className="job-description">
-                Frontend development (Angular8) on a new commercial web portal
+                Front-end development (Angular8) on a new commercial web portal
                 built on the Backbase platform.
               </p>
             </div>

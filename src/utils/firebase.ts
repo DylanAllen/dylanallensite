@@ -1,21 +1,21 @@
-import firebase from "firebase/app";
+import "firebase/compat/firestore"
 import { firebaseConfig } from '../firebase.config';
 import 'firebase/storage';
+import { initializeApp } from "firebase/app"
+import { getDownloadURL, getStorage, ref } from "firebase/storage";
 
 export function initApp() {
+    let app;
     try {
-        firebase.initializeApp(firebaseConfig);
+        app = initializeApp(firebaseConfig);
     } catch (error) {
-        if (!/already exists/u.test(error.message)) {
-            console.error('Firebase admin initialization error', error.stack);
-        }
+        
     }
-    return firebase;
+    return app;
 }
 
 export const getImage = async (path: string | undefined) => {
-    console.log(firebase);
-    var storage = firebase.storage();
-    const url = await storage.ref(path).getDownloadURL();
+    var storage = getStorage();
+    const url = await getDownloadURL(ref(storage, path))
     return url
 }
