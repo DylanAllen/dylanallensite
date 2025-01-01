@@ -1,11 +1,12 @@
 import { useContext, useState, useEffect, ChangeEvent } from "react";
 import { Context, StateType } from "../App";
 import "firebase/compat/firestore";
-import "firebase/firestore";
-import { Heading, TextArea, Button, Markdown, Box } from "grommet";
+import "@firebase/firestore";
+import { Heading, TextArea, Button, Box } from "grommet";
+import { Markdown } from '../components/Markdown';
 import { Trash } from "grommet-icons";
 import { apiPost } from "../utils/api";
-import { collection, CollectionReference, deleteDoc, doc, DocumentData, getFirestore, onSnapshot, query, Timestamp, where } from "firebase/firestore";
+import { collection, CollectionReference, deleteDoc, doc, DocumentData, getFirestore, onSnapshot, query, Timestamp, where } from "@firebase/firestore";
 
 interface CommentProps {
   slug: string;
@@ -161,17 +162,17 @@ const Comments: React.FunctionComponent<CommentProps> = ({ slug }) => {
   useEffect(() => {
     if (!commentsRef && state.initialized) {
       const db = getFirestore()
-      setCommentsRef( 
-        collection(db,"comments", slug,"comments")
+      setCommentsRef(
+        collection(db, "comments", slug, "comments")
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.initialized]);
   useEffect(() => {
-    let unsub = () => {};
+    let unsub = () => { };
     if (commentsRef) {
       const queryRef = query(commentsRef, where("status", "==", "approved"));
-      
+
       unsub = onSnapshot(queryRef, (snapShot) => {
         const data = snapShot.docs.map((doc) => {
           return { ...doc.data(), id: doc.id } as CommentType;

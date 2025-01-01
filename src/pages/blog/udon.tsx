@@ -1,5 +1,5 @@
 import Layout from "../../components/Layout";
-import { Markdown } from "grommet";
+import { Markdown } from "../../components/Markdown";
 import Comments from "../../components/Comments";
 import Picture from "../../components/Picture";
 import { motion } from "framer-motion";
@@ -43,13 +43,6 @@ Once this product is ready for prime time I will probably set up a brochure site
 That is about it. I would gladly welcome any contributions to the project, and in the near future, I will be looking for a brave agency to volunteer for beta testing!
 `;
 
-const Comps = {
-  p: {
-    component: "paragraph",
-    props: { fill: "true" },
-  },
-};
-
 function UdonOne() {
   return (
     <Layout
@@ -65,7 +58,7 @@ function UdonOne() {
           layoutId={`post-${meta.slug}`}
         ></Picture>
         <div className="postContainer">
-          <Markdown components={Comps}>{md}</Markdown>
+          <Markdown>{md}</Markdown>
         </div>
         <Comments slug={meta.slug}></Comments>
       </div>

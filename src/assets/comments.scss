@@ -1,3 +1,5 @@
+@use './globals.scss' as *;
+
 .commentsContainer {
   border-top: solid 1px $grey;
   margin-top: 40px;

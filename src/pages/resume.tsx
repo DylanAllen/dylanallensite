@@ -2,51 +2,39 @@ import Layout from "../components/Layout";
 import TypedText from "../components/TypedText";
 
 const techStack = {
+  TypeScript: 6,
   JavaScript: 6,
+  Java: 5,
+  A11Y: 6,
   React: 5,
-  TypeScript: 5,
   VueJS: 5,
   Angular: 4,
-  "Framer Motion": 3,
   "CSS/SCSS": 3,
   "Node.js": 4,
   AWS: 4,
   "UI Design": 3,
-  DynamoDB: 5,
-  Lambda: 4,
-  CloudFormation: 4,
   Python: 3,
-  "Serverless Framework": 4,
-  "Serverless Architecture": 4,
   FireStore: 3,
 };
-
-let techArr = [];
-for (const word in techStack) {
-  techArr.push(word);
-}
 
 const Resume = () => {
   return (
     <Layout>
       <section id="pageheader" className="container">
         <h1 className="big-heading">Dylan Allen</h1>
-        <TypedText className="tagline" text="JavaScript Engineer" />
+        <TypedText className="tagline" text="Software Engineer" />
       </section>
       <section className="inverted">
         <div className="introtext container">
           <p>
-            I am an <strong>front-end engineer</strong>{" "}
+            I am a <strong>full-stack software engineer</strong>{" "}
             in{" "}
             <em>
               <a href="https://en.wikipedia.org/wiki/Tulsa,_Oklahoma">
                 Tulsa, OK
               </a>
             </em>
-            . . I like to work with React, Node.js, and TypeScript. I have
-            experience developing lambda functions, and really like serverless
-            architecture. My DB experience is mostly NoSQL (DynamoDB &
-            FireStore).
+            . . I like to work with TypeScript and Java.
           </p>
         </div>
       </section>
@@ -63,27 +51,41 @@ const Resume = () => {
       <section className="experience">
         <h1 className="container">Experience</h1>
         <div className="experience-container">
-          <div className="">
+        <div className="">
+            <div className="job-block container">
+              <h2 className="job-header">
+                Google
+                <span className="title-sep"> | </span>
+                <span className="duration">Apr 2022 - Present</span>
+              </h2>
+              <div className="job-title">Software engineer</div>
+              <p className="job-description">
+                I am a full-stack software engineer on Google Workspace's Data Loss Prevention team.
+                I work primarily in TypeScript and Java.
+              </p>
+            </div>
+          </div>
+          <div className="inverted">
             <div className="job-block container">
               <h2 className="job-header">
                 <a href="https://moov.io">Moov Financial</a>
                 <span className="title-sep"> | </span>
-                <span className="duration">Oct 2020 - Present</span>
+                <span className="duration">Oct 2020 - Apr 2022</span>
               </h2>
               <div className="job-title">Engineering manager</div>
               <p className="job-description">
-                Leading a team of backend and front-end engineers building the
+                Led a team of backend and front-end engineers building the
                 future of fintech.
               </p>
               <p className="job-description">
                 I joined Moov as a senior front-end engineer, was promoted to
-                team lead after 4 months, and then promoted to engineering
-                manager 5 months after that. Managing a team of 5 engineers.
+                team lead, and then promoted to engineering
+                manager.
               </p>
             </div>
           </div>
 
-          <div className="inverted">
+          <div className="">
             <div className="job-block container">
               <h2 className="job-header">
                 BOK Financial<span className="title-sep"> | </span>
@@ -97,7 +99,7 @@ const Resume = () => {
             </div>
           </div>
 
-          <div className="">
+          <div className="inverted">
             <div className="job-block container">
               <h2 className="job-header">
                 VoiceFoundry<span className="title-sep"> | </span>
@@ -115,7 +117,7 @@ const Resume = () => {
             </div>
           </div>
 
-          <div className="inverted">
+          <div className="">
             <div className="job-block container">
               <h2 className="job-header">
                 Hampton Creative<span className="title-sep"> | </span>
@@ -138,7 +140,7 @@ const Resume = () => {
             </div>
           </div>
 
-          <div className="">
+          <div className="inverted">
             <div className="job-block container">
               <h2 className="job-header">
                 Webco Industries<span className="title-sep"> | </span>
@@ -162,7 +164,7 @@ const Resume = () => {
             </div>
           </div>
 
-          <div className="inverted">
+          <div className="">
             <div className="job-block container">
               <h2 className="job-header">
                 Baker Hughes<span className="title-sep"> | </span>

@@ -1,8 +1,8 @@
 import "firebase/compat/firestore"
 import { firebaseConfig } from '../firebase.config';
-import 'firebase/storage';
-import { initializeApp } from "firebase/app"
-import { getDownloadURL, getStorage, ref } from "firebase/storage";
+import '@firebase/storage';
+import { initializeApp } from "@firebase/app"
+import { getDownloadURL, getStorage, ref } from "@firebase/storage";
 
 export function initApp() {
     let app;

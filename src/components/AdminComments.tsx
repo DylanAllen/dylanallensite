@@ -1,12 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
 
 import { Trash, CheckboxSelected } from 'grommet-icons';
-import { Heading, Markdown } from 'grommet';
+import { Heading } from 'grommet';
+import { Markdown } from '../components/Markdown';
 import "firebase/compat/firestore"
 import { Link } from "react-router-dom";
 import { Context } from "../App";
 import { apiPost } from "../utils/api";
-import { collection, getDocs, getFirestore, Timestamp } from "firebase/firestore";
+import { collection, getDocs, getFirestore, Timestamp } from "@firebase/firestore";
 
 interface CommentType {
   userid: string;
@@ -19,7 +20,7 @@ interface CommentType {
 }
 
 const AdminComments: React.FunctionComponent = () => {
-  
+
   const state = useContext(Context)
   const [comments, updateComments] = useState<CommentType[]>([]);
   const [trigger, update] = useState(0);
@@ -28,8 +29,8 @@ const AdminComments: React.FunctionComponent = () => {
 
   const Comment: React.FunctionComponent<{ comment: CommentType }> = ({ comment }) => (
     <div className="commentContainer">
-      <Trash color="#453762" className="deleteComment" onClick={() => {deleteComment(comment.slug, comment.id )}} />
-      { (comment.status !== 'approved') && <CheckboxSelected color="#453762" className="approveComment" onClick={() => {approveComment(comment.slug,comment.id)}} />}
+      <Trash color="#453762" className="deleteComment" onClick={() => { deleteComment(comment.slug, comment.id) }} />
+      {(comment.status !== 'approved') && <CheckboxSelected color="#453762" className="approveComment" onClick={() => { approveComment(comment.slug, comment.id) }} />}
       <div className="comment">
         <div className="username">{comment.displayname}</div>
         <div className="timestamp">{comment.timestamp.toDate().toLocaleDateString()} {comment.timestamp.toDate().toLocaleTimeString()}</div>
@@ -48,10 +49,10 @@ const AdminComments: React.FunctionComponent = () => {
     const commentsPromise = posts.docs.map(async (post) => {
       let slug = post.id;
       return new Promise(async (resolve) => {
-        
+
         const posts = (await getDocs(collection(db, 'comments', post.id, 'comments')))
         posts.forEach((doc) => {
-          allComments.push({...doc.data(), slug: slug, id: doc.id} as CommentType);
+          allComments.push({ ...doc.data(), slug: slug, id: doc.id } as CommentType);
         })
         resolve(allComments)
       })
@@ -66,8 +67,8 @@ const AdminComments: React.FunctionComponent = () => {
 
   useEffect(() => {
     getComments();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[trigger])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [trigger])
 
   const approveComment = async (slug: string, id: string) => {
     if (state.user) {
@@ -85,10 +86,10 @@ const AdminComments: React.FunctionComponent = () => {
       } else {
         alert(res.message);
         state.toast(res.message);
-      } 
+      }
     } else {
       alert('User not found');
-    }  
+    }
   }
 
   const deleteComment = async (slug: string, id: string) => {
@@ -106,13 +107,13 @@ const AdminComments: React.FunctionComponent = () => {
         update(trigger + 1);
       } else {
         alert(res.message);
-        state.toast(res.message,'error');
-      } 
+        state.toast(res.message, 'error');
+      }
     } else {
       alert('User not found');
-    }  
+    }
   }
-   
+
   return (
     <div className="commentsContainer">
       <Heading level={2}>Comments</Heading>

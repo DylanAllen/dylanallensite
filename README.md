@@ -43,6 +43,7 @@ netlify dev
 
 ## Deploy
 ```bash
+netlify build
 netlify deploy --prod
 ```
 You will also need to add your Google analytics script as a code snippet in the Netlify project

@@ -52,21 +52,21 @@ const IndexPage = () => {
           animate="visible"
           variants={titleVariant}
         >
-          Front-end engineer
+          Software engineer
         </motion.span>
       </section>
       <section className="inverted">
         <div className="introtext container">
           <p>
             Good {greeting}
-            {visitor ? ", and welcome back!" : ","} I am an{" "}
-            <strong>front-end engineer</strong> in{" "}
+            {visitor ? ", and welcome back!" : ","} I am a{" "}
+            <strong>full-stack software engineer</strong> in{" "}
             <em>
               <a tabIndex={6} href="https://en.wikipedia.org/wiki/Tulsa,_Oklahoma">
                 Tulsa, OK
               </a>
             </em>
-            . I like to work with React, Node.js, and TypeScript.
+            . I like to work with TypeScript and Java.
           </p>
         </div>
       </section>

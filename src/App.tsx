@@ -2,13 +2,12 @@ import { useEffect, useReducer } from "react";
 import { Helmet } from "react-helmet";
 import Routes from "./Routes";
 import { initApp } from "./utils/firebase";
-import { User } from "firebase/auth"
-import "firebase/auth";
+import { User } from "@firebase/auth"
+import "@firebase/auth";
 import Toaster, { ToastInput, ToastStatusType } from "./components/Toast";
 import React from "react";
 import { auth } from "./utils/auth";
 import "./assets/style.scss";
-import { AnimateSharedLayout } from "framer-motion";
 
 export interface StateType {
   user?: User | null;
@@ -106,9 +105,7 @@ function App() {
         />
       </Helmet>
       <Context.Provider value={state}>
-        {/* <AnimateSharedLayout> */}
           <Routes />
-        {/* </AnimateSharedLayout> */}
       </Context.Provider>
       <Toaster toastInput={state.toastValue} />
     </div>

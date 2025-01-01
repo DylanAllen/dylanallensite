@@ -1,9 +1,4 @@
-// .loaded {
-//   transition: opacity 0.3s ease;
-// }
-// .invisible {
-//   opacity: 0;
-// }
+@use './globals.scss' as *;
 
 header#mainheader {
   display: grid;

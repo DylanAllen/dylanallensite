@@ -1,3 +1,5 @@
+@use './globals.scss' as *;
+
 @mixin mobileBlogStyle {
   &.post-list {
     .post-summary {

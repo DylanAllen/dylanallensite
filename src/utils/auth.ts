@@ -1,9 +1,9 @@
 import "firebase/compat/firestore"
-import 'firebase/storage'
+import '@firebase/storage'
 
-import 'firebase/auth'; 
-import { GoogleAuthProvider, User, getAuth, signInWithPopup } from "firebase/auth";
-import { FirebaseStorage, getStorage } from "firebase/storage"
+import '@firebase/auth'; 
+import { GoogleAuthProvider, User, getAuth, signInWithPopup } from "@firebase/auth";
+import { FirebaseStorage, getStorage } from "@firebase/storage"
 
 interface Auth {
     init: () => void;

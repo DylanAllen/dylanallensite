@@ -1,9 +1,8 @@
-@import './globals.scss';
-@import './layout.scss';
-@import './picture.scss';
-@import './blog.scss';
-@import './comments.scss';
-@import './post.scss';
-@import './home.scss';
-@import './resume.scss';
-@import './toast.scss';
+@use './layout.scss';
+@use './picture.scss';
+@use './blog.scss';
+@use './comments.scss';
+@use './post.scss';
+@use './home.scss';
+@use './resume.scss';
+@use './toast.scss';

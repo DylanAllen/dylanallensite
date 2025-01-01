@@ -6,13 +6,13 @@ import { Link, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 type Props = {
-  children: React.ReactChild[] | React.ReactChild
+  children: React.ReactElement[] | React.ReactElement
   title?: string;
   image?: string;
   description?: string;
 }
 
-const Layout: React.FunctionComponent<Props> = (props) => {
+function Layout(props: Props) {
 
   const { children, image } = props;
   const title = props.title || 'Dylan Allen | JavaScript Engineer | Front-end Web | React | Serverless';
